@@ -1,0 +1,279 @@
+#importer les données de la région KABERTINE
+dfs = [] 
+#cpt=0
+#année 2016
+for j in range (1,10):   #les mois du 01 jusqu'à 09
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2016.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2016.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+for j in range (10,13):   #les mois du 10 jusqu'à 12
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-%s-2016.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-%s-2016.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+#année 2017        
+for j in range (1,5):   #les mois du 01 jusqu'à 04
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2017.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2017.xlsx'%(i, j),sheet_name=u"réalisé KAB",skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+
+#print(dfs)
+#print(cpt)
+regionKAB=pd.DataFrame(pd.concat(dfs, axis=0))
+regionKAB.to_excel(r'C:\Users\djiha\Documents\data\regionKAB.xlsx')
+#print(regionKAB)
+print(regionKAB.shape)
+
+#importer les données de la région ADRAR
+dfs = [] 
+#cpt=0
+#année 2016
+for j in range (1,10):   #les mois du 01 jusqu'à 09
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+for j in range (10,13):   #les mois du 10 jusqu'à 12
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+#année 2017        
+for j in range (1,5):   #les mois du 01 jusqu'à 04
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé ADR',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+
+#print(dfs)
+#print(cpt)
+regionADR=pd.DataFrame(pd.concat(dfs, axis=0))
+regionADR.to_excel(r'C:\Users\djiha\Documents\data\regionADR.xlsx')
+#print(regionADR)
+print(regionADR.shape)
+
+#importer les données de la région REGGANE
+dfs = [] 
+#cpt=0
+#année 2016
+for j in range (1,10):   #les mois du 01 jusqu'à 09
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+for j in range (10,13):   #les mois du 10 jusqu'à 12
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+#année 2017        
+for j in range (1,5):   #les mois du 01 jusqu'à 04
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+           #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé REG',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+
+#print(dfs)
+#print(cpt)
+regionREG=pd.DataFrame(pd.concat(dfs, axis=0))
+regionREG.to_excel(r'C:\Users\djiha\Documents\data\regionREG.xlsx')
+#print(regionREG)
+print(regionREG.shape)
+
+#importer les données de la région TIMIMOUNE
+dfs = [] 
+#cpt=0
+#année 2016
+for j in range (1,10):   #les mois du 01 jusqu'à 09
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2016.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+for j in range (10,13):   #les mois du 10 jusqu'à 12
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-%s-2016.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+#année 2017        
+for j in range (1,5):   #les mois du 01 jusqu'à 04
+    for i in range (1,10):   #les jours du 01 jusqu'à 09
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\0%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+    for i in range (10,32):   #les jours du 10 jusqu'à 31
+        try:
+            df = pd.read_excel(r'C:\Users\djiha\Documents\data\%s-0%s-2017.xlsx'%(i, j),sheet_name=u'réalisé TIM',skiprows=6,usecols='A:D')
+            df.columns = ["time", "realisation","irradiance","temperature"]
+            dfs.append(df)
+            #cpt=cpt+1
+        except IOError:
+            pass
+        except XLRDError:
+            pass
+
+#print(dfs)
+#print(cpt)
+regionTIM=pd.DataFrame(pd.concat(dfs, axis=0))
+regionTIM.to_excel(r'C:\Users\djiha\Documents\data\regionTIM.xlsx')
+#print(regionTIM)
+print(regionTIM.shape)
