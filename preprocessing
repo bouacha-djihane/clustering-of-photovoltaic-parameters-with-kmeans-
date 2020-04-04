@@ -1,0 +1,124 @@
+#afficher les types des paramètres de chaque DataFrame
+print("ADRAR:",regionADR.dtypes)
+print("KABERTENE:",regionKAB.dtypes)
+print("REGANE:",regionREG.dtypes)
+print("TIMIMOUNE:",regionTIM.dtypes)
+
+#----------------------------------------------------------------------------------
+
+#caster les types sensés etre float
+regionADR['realisation']=pd.to_numeric(regionADR['realisation'],errors='coerce')
+regionADR['irradiance']=pd.to_numeric(regionADR['irradiance'],errors='coerce')
+regionADR['temperature']=pd.to_numeric(regionADR['temperature'],errors='coerce')
+regionADR.dtypes
+regionTIM['temperature']=pd.to_numeric(regionTIM['temperature'],errors='coerce')
+regionTIM.dtypes
+
+#----------------------------------------------------------------------------------
+
+
+#description de chaque dataframe
+regionADR.describe(include='all')
+regionKAB.describe(include='all')
+regionREG.describe(include='all')
+regionTIM.describe(include='all')
+
+#----------------------------------------------------------------------------------
+
+
+#detecter les valeurs manquantes de chaque paramètre
+
+# ..... METHODE1
+regionKAB.apply (lambda x: sum (x.isna ()), axis = 0)
+regionREG.apply (lambda x: sum (x.isna ()), axis = 0)
+
+# ..... METHODE2
+regionADR.isnull().sum() # If the value is NaN, returns True.
+regionTIM.isnull().sum() 
+
+#----------------------------------------------------------------------------------
+
+
+#supprimer les lignes avec toutes les valeurs manquantes
+print(regionKAB.shape)
+regionKAB=regionKAB.dropna(how='all')
+print(regionKAB.shape)
+
+print(regionADR.shape)
+regionADR=regionADR.dropna(how='all')
+print(regionADR.shape)
+
+print(regionREG.shape)
+regionREG=regionREG.dropna(how='all')
+print(regionREG.shape)
+
+print(regionTIM.shape)
+regionTIM=regionTIM.dropna(how='all')
+print(regionTIM.shape)
+
+#----------------------------------------------------------------------------------
+
+
+#remplacer les valeurs NAN par la moyenne du paramètre
+
+#.... METHODE1
+regionKAB['realisation'] = regionKAB['realisation'].fillna((regionKAB['realisation'].mean()))
+regionKAB['irradiance'] = regionKAB['irradiance'].fillna((regionKAB['irradiance'].mean()))
+regionKAB['temperature'] = regionKAB['temperature'].fillna((regionKAB['temperature'].mean()))
+regionREG['realisation'] = regionREG['realisation'].fillna((regionREG['realisation'].mean()))
+regionREG['irradiance'] = regionREG['irradiance'].fillna((regionREG['irradiance'].mean()))
+regionREG['temperature'] = regionREG['temperature'].fillna((regionREG['temperature'].mean()))
+
+#.... METHODE2
+regionADR=regionADR.fillna(regionADR.mean())
+regionTIM=regionTIM.fillna(regionTIM.mean())
+
+#----------------------------------------------------------------------------------
+
+
+#verifier les valeurs NAN !
+regionADR.isnull().sum()
+regionKAB.isnull().sum()
+regionREG.isnull().sum()
+regionTIM.isnull().sum()
+
+#----------------------------------------------------------------------------------
+
+
+#normalisation de données selon la formule Ynorm=(Yi-Ymin)/(Ymax-Ymin)
+regionKAB["realisation"]=((regionKAB["realisation"]-regionKAB["realisation"].min())/(regionKAB["realisation"].max()-regionKAB["realisation"].min()))
+regionKAB["irradiance"]=((regionKAB["irradiance"]-regionKAB["irradiance"].min())/(regionKAB["irradiance"].max()-regionKAB["irradiance"].min()))
+regionKAB["temperature"]=((regionKAB["temperature"]-regionKAB["temperature"].min())/(regionKAB["temperature"].max()-regionKAB["temperature"].min()))
+regionKAB
+
+regionADR["realisation"]=((regionADR["realisation"]-regionADR["realisation"].min())/(regionADR["realisation"].max()-regionADR["realisation"].min()))
+regionADR["irradiance"]=((regionADR["irradiance"]-regionADR["irradiance"].min())/(regionADR["irradiance"].max()-regionADR["irradiance"].min()))
+regionADR["temperature"]=((regionADR["temperature"]-regionADR["temperature"].min())/(regionADR["temperature"].max()-regionADR["temperature"].min()))
+regionADR
+
+regionREG["realisation"]=((regionREG["realisation"]-regionREG["realisation"].min())/(regionREG["realisation"].max()-regionREG["realisation"].min()))
+regionREG["irradiance"]=((regionREG["irradiance"]-regionREG["irradiance"].min())/(regionREG["irradiance"].max()-regionREG["irradiance"].min()))
+regionREG["temperature"]=((regionREG["temperature"]-regionREG["temperature"].min())/(regionREG["temperature"].max()-regionREG["temperature"].min()))
+regionREG
+
+regionTIM["realisation"]=((regionTIM["realisation"]-regionTIM["realisation"].min())/(regionTIM["realisation"].max()-regionTIM["realisation"].min()))
+regionTIM["irradiance"]=((regionTIM["irradiance"]-regionTIM["irradiance"].min())/(regionTIM["irradiance"].max()-regionTIM["irradiance"].min()))
+regionTIM["temperature"]=((regionTIM["temperature"]-regionTIM["temperature"].min())/(regionTIM["temperature"].max()-regionTIM["temperature"].min()))
+regionTIM
+
+#----------------------------------------------------------------------------------
+
+
+#matrices de corrélation
+print(regionKAB.corr())
+print(regionADR.corr())
+print(regionREG.corr())
+print(regionTIM.corr())
+
+#exemple matrice de corrélation avec saeborn
+C=regionTIM.corr()
+sn.heatmap(C, annot=True)
+plt.show()
+
+#----------------------------------------------------------------------------------
+
