@@ -1,0 +1,9 @@
+import pandas as pd
+from xlrd import XLRDError
+import seaborn as sn
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score, silhouette_samples
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import numpy as np
